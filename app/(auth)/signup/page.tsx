@@ -1,10 +1,10 @@
 "use client"
+import FormUser from '@/features/auth/components/FormUser'
 import React from 'react'
-import FormUser from '../(components)/FormUser'
 
 const SignupPage = () => {
   return (
-    <FormUser mode='signup' onSubmit={() => {}} />
+    <FormUser mode='signup' />
   )
 }
 

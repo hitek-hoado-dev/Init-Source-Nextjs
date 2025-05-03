@@ -1,7 +1,7 @@
 import useSWRMutation from "swr/mutation";
-import { login } from "../(api)/loginApi";
 import { AxiosResponse } from "axios";
-import { IFormAuth } from "../(types)";
+import { IFormAuth } from "../types";
+import { login } from "../api/loginApi";
 
 export const useLogin = () => {
     const { trigger, data, error, isMutating } = useSWRMutation<

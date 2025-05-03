@@ -1,5 +1,6 @@
 "use client"
-import FormUser from '../(components)/FormUser'
+
+import FormUser from "@/features/auth/components/FormUser"
 
 const LoginPage = () => {
 

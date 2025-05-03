@@ -4,12 +4,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
-import { FormMode, IFormAuth } from '../(types)';
-import { useLogin } from '../(hooks)/useLogin';
 import { setCookie } from '@/utils/cookie';
 import { STORAGES } from '@/constants/storages';
 import { useRouter } from 'next/navigation';
 import { APP_ROUTE } from '@/constants/routes';
+import { FormMode, IFormAuth } from '../types';
+import { useLogin } from '../hooks/useLogin';
+import { passwordPattern } from '../constants';
+
 
 interface AuthFormProps {
   /** 'login' hoặc 'signup' để đổi title và button text */
@@ -86,7 +88,7 @@ const FormUser: React.FC<AuthFormProps> = ({ mode }) => {
                 required: "Password is required",
                 minLength: { value: 6, message: "Min 6 characters" },
                 pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                    value: passwordPattern,
                     message: "Password must be at least 6 characters long and include uppercase, lowercase, a number, and a special character"
                 }
               })}
