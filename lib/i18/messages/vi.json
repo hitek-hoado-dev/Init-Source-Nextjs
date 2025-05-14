@@ -1,0 +1,34 @@
+{
+  "HomePage": {
+    "title": "Chào cậu :)",
+    "name": "Tên",
+    "url": "Địa chỉ",
+    "thumbnail": "Địa chỉ hình thu nhỏ"
+  },
+  "Header" : {
+    "title": "Code mẫu",
+    "log_out": "Đăng xuất",
+    "log_in": "Đăng nhập"
+  },
+  "Users": {
+    "title": "Quản lí người dùng",
+    "name": "Tên",
+    "phone": "Số điện thoại",
+    "username": "Tên người dùng"
+  },
+  "Settings": {
+    "title": "Hướng dẫn cài đặt",
+    "description": "Thực hiện theo các bước dưới đây để bảo mật tài khoản và tùy chỉnh sở thích của bạn.",
+    "steps": {
+      "step1Title": "1. Mở Hồ sơ của bạn",
+      "step1Description": "Nhấp vào avatar của bạn ở góc trên bên phải để mở cài đặt hồ sơ.",
+      "step2Title": "2. Chuyển đến Bảo mật",
+      "step2Description": "Trong thanh bên, chọn **Bảo mật** để quản lý mật khẩu, xác thực hai yếu tố và các phiên.",
+      "step3Title": "3. Cập nhật Mật khẩu",
+      "step3Description": "Nhập mật khẩu hiện tại, sau đó chọn mật khẩu mới và xác nhận.",
+      "step4Title": "4. Bật Xác thực Hai Yếu tố",
+      "step4Description": "Quét mã QR bằng ứng dụng xác thực của bạn và nhập mã hiển thị."
+    },
+    "lastUpdated": "Cập nhật lần cuối: {date}"
+  }
+}

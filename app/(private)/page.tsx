@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow
 } from "@mui/material"
+import { getTranslations } from "next-intl/server"
 
 interface ContentRow {
   id: number
@@ -19,7 +20,6 @@ interface ContentRow {
 
 export default async function Page() {
   const contents = await getContents()
-  console.log(contents[0]?.thumbnailUrl)
   const rows: ContentRow[] =
     contents?.map((r : ContentRow) => ({
       id: r.id,
@@ -28,16 +28,18 @@ export default async function Page() {
       thumbnailUrl: r.thumbnailUrl,
     })) || []
 
+  const t = await getTranslations("HomePage")
+
   return (
     <div className="p-6">
-      <h1 className="text-black mb-4">Homepage</h1>
+      <h1 className="text-black mb-4">{t("title")}</h1>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell><strong>Name</strong></TableCell>
-              <TableCell><strong>Url</strong></TableCell>
-              <TableCell><strong>Thumb</strong></TableCell>
+              <TableCell><strong>{t("name")}</strong></TableCell>
+              <TableCell><strong>{t("url")}</strong></TableCell>
+              <TableCell><strong>{t("thumbnail")}</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

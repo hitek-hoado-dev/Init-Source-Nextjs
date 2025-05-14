@@ -6,41 +6,45 @@ import {
   Box,
   Paper,
 } from '@mui/material'
+import { getTranslations } from 'next-intl/server'
 
-export const dynamic = 'force-static'
-export const revalidate = false
+// export const dynamic = 'force-static'
+// export const revalidate = false
 
-const steps = [
-  {
-    title: '1. Open Your Profile',
-    description: 'Click on your avatar in the top-right corner to open your profile settings.',
-    img: '/images/guide-step1.png',
-  },
-  {
-    title: '2. Navigate to Security',
-    description: 'In the sidebar, select **Security** to manage your password, 2FA, and sessions.',
-    img: '/images/guide-step2.png',
-  },
-  {
-    title: '3. Update Password',
-    description: 'Enter your current password, then choose a new one and confirm.',
-    img: '/images/guide-step3.png',
-  },
-  {
-    title: '4. Enable Two-Factor Authentication',
-    description: 'Scan the QR code with your authenticator app and enter the code shown.',
-    img: '/images/guide-step4.png',
-  },
-]
+export default async function SettingPage() {
+  // Lấy hàm t(key, vars) từ namespace 'Settings'
+  const t = await getTranslations('Settings')
 
-export default function SettingPage() {
+  const steps = [
+    {
+      title: t('steps.step1Title'),
+      description: t('steps.step1Description'),
+      img: '/images/guide-step1.png',
+    },
+    {
+      title: t('steps.step2Title'),
+      description: t('steps.step2Description'),
+      img: '/images/guide-step2.png',
+    },
+    {
+      title: t('steps.step3Title'),
+      description: t('steps.step3Description'),
+      img: '/images/guide-step3.png',
+    },
+    {
+      title: t('steps.step4Title'),
+      description: t('steps.step4Description'),
+      img: '/images/guide-step4.png',
+    },
+  ]
+
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h3" gutterBottom>
-        Settings Guide
+        {t('title')}
       </Typography>
       <Typography variant="body1" paragraph>
-        Follow the steps below to secure your account and customize your preferences.
+        {t('description')}
       </Typography>
 
       {steps.map((step, idx) => (
@@ -65,8 +69,13 @@ export default function SettingPage() {
         </Paper>
       ))}
 
-      <Typography variant="caption" color="text.secondary" display="block" textAlign="center">
-        Last updated: {new Date().toLocaleDateString()}
+      <Typography
+        variant="caption"
+        color="text.secondary"
+        display="block"
+        textAlign="center"
+      >
+        {t('lastUpdated', { date: new Date().toLocaleDateString() })}
       </Typography>
     </Container>
   )

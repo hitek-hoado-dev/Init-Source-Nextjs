@@ -13,7 +13,7 @@ const encrypt = (data = '') => {
   }
 };
 
-const decrypted = (data = '') => {
+export const decrypted = (data = '') => {
   try {
     const decrypt = crypto.AES.decrypt(data, secretKey);
     const decryptedData = JSON.parse(decrypt.toString(crypto.enc.Utf8));

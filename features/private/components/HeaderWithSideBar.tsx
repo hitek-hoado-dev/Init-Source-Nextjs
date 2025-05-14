@@ -8,13 +8,16 @@ import { useRouter } from 'next/navigation'
 import { clearCookie, getCookie } from '@/utils/cookie'
 import { STORAGES } from '@/constants/storages'
 import { APP_ROUTE } from '@/constants/routes'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { useTranslations } from 'next-intl'
 
 const HeaderWithSideBar = () => {
 
     const router = useRouter();
     const [isOpenSidebar, setIsOpenSidebar] = useState(false)
     const token = getCookie(STORAGES.ACCESS_TOKEN)
-    const appName = process.env.NEXT_PUBLIC_APP_NAME
+    const t = useTranslations("Header")
+    const isSupportLanguage = process.env.NEXT_PUBLIC_IS_SUPPORT_LANGUAGE === "TRUE"
 
     const handleLogout = () => {
         clearCookie(STORAGES.ACCESS_TOKEN)
@@ -35,17 +38,20 @@ const HeaderWithSideBar = () => {
                         <MenuIcon />
                     </IconButton>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    {appName}
+                    {t("title")}
                 </Typography>
                 {token ? (
                     <div className='flex gap-3 items-center'>
                         <Avatar />
                         <Button color='error' variant='contained' onClick={handleLogout}>
-                            Logout
+                            {t("log_out")}
                         </Button>
+                        {isSupportLanguage && (
+                            <LanguageSwitcher />
+                        )}
                     </div>
                 ) : (
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">{t("log_in")}</Button>
                 )}
                 </Toolbar>
                 <Drawer 
