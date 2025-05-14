@@ -12,8 +12,8 @@ const PUBLIC_PATHS = [
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
   const token = req.cookies.get(STORAGES.ACCESS_TOKEN)?.value
-    console.log("token", token)
-    console.log("req", req)
+    // console.log("token", token)
+    // console.log("req", req)
 
   // 1. Nếu đang vào public path
   if (PUBLIC_PATHS.some(p => pathname.startsWith(p))) {

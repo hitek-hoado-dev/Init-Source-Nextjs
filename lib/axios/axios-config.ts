@@ -1,3 +1,5 @@
+import { STORAGES } from '@/constants/storages';
+import { getCookie } from '@/utils/cookie';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
@@ -8,13 +10,23 @@ const axiosInstance = axios.create({
   },
 });
 
-// axiosInstance.interceptors.request.use((config) => {
-//   const token = getCookie(STORAGES.ACCESS_TOKEN);
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//   return config;
-// });
+axiosInstance.interceptors.request.use(async (config) => {
+  let token: string | undefined
+
+  if (typeof window === 'undefined') {
+    // server-side only: dynamic import để bundler không include "next/headers" trong client bundle
+    const { cookies } = await import('next/headers')
+    token = await cookies().then(res => res.get(STORAGES.ACCESS_TOKEN)?.value)
+  } else {
+    // client-side
+    token = getCookie(STORAGES.ACCESS_TOKEN)
+  }
+
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
 
 // let isRefreshing = false;
 // let failedQueue: any[] = [];

@@ -32,13 +32,14 @@ const FormUser: React.FC<AuthFormProps> = ({ mode }) => {
 
     // 2) SWR mutation hook
     const {
-      trigger: login,
+      // trigger: login,
       error,
       isMutating: isLoading,
     } = useLogin()
 
     const onSubmit = (data: IFormAuth) => {
       // login(data)
+      console.log(data)
       setCookie(STORAGES.ACCESS_TOKEN, data)
       router.push(APP_ROUTE.home)
     }
