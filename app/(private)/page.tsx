@@ -1,5 +1,5 @@
 // app/page.tsx
-import { getContents } from "@/features/private/action/getContents"
+import { getContents } from "@/features/private/api/getContents"
 import {
   Paper,
   Table,
