@@ -5,5 +5,13 @@ export enum API_ROUTE {
 export enum APP_ROUTE {
     login = "/login",
     signup = "/signup",
-    home = "/"
+    home = "/",
+    journal = "/journal",
+    handbook = "/handbook",
+    profile = "/profile",
+    shop = "/shop",
+    repository = "/repository",
+    aboutUs = "/about-us",
+    glossary = "/glossary",
+    forgot = "/forgot",
 }

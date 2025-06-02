@@ -1,22 +1,22 @@
-import useSWRMutation from "swr/mutation";
-import { AxiosResponse } from "axios";
-import { IFormAuth } from "../types";
+import { useMutation } from "@tanstack/react-query";
 import { login } from "../api/loginApi";
+import { setCookie } from "@/utils/cookie";
+import { STORAGES } from "@/constants/storages";
 
-export const useLogin = () => {
-    const { trigger, data, error, isMutating } = useSWRMutation<
-        AxiosResponse<IFormAuth>,  // Data trả về
-        Error,               // Error type
-        string,              // Key type (ký tự literal “login”)
-        IFormAuth            // Arg type
-    >(
-        "login",
-        // fetcher đúng chữ ký: (key, {arg}) => ...
-        async (key, { arg }) => {
-        // arg là IFormAuth
-        return await login(arg);
-        }
-    );
-
-    return { trigger, data, error, isMutating }
+export const authHooks = {
+    useLogin: () => {
+        return useMutation({
+            mutationFn: login,
+            onSuccess: (data) => {
+                // Handle successful login, e.g., store token, redirect, etc.
+                console.log("Login successful:", data);
+                setCookie(STORAGES.ACCESS_TOKEN, data.access_token);
+                
+            },
+            onError: (error) => {
+                // Handle login error, e.g., show error message
+                console.error("Login failed:", error);
+            }   
+        })
+    }
 }

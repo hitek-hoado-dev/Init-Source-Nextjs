@@ -9,7 +9,11 @@ const PUBLIC_PATHS = [
   '/signup',
 ]
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
+  const xff = req.headers.get('x-forwarded-for') || ''
+  const ip = xff.split(',')[0] || ''
+  console.log('IP:', ip)
+
   const { pathname } = req.nextUrl
   const token = req.cookies.get(STORAGES.ACCESS_TOKEN)?.value
     // console.log("token", token)

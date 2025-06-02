@@ -1,4 +1,4 @@
-import HeaderWithSideBar from '@/features/private/components/HeaderWithSideBar';
+import HeaderWithSideBar from '@/features/public/components/Header';
 import React from 'react';
 
 const PrivateLayout = ({ children }: { children: React.ReactNode }) => {
