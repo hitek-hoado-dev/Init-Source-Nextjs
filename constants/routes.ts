@@ -1,7 +1,3 @@
-export enum API_ROUTE {
-    login = "/api/login"
-}
-
 export enum APP_ROUTE {
     login = "/login",
     signup = "/signup",
@@ -15,3 +11,8 @@ export enum APP_ROUTE {
     glossary = "/glossary",
     forgot = "/forgot",
 }
+
+export const PUBLIC_PATHS = [
+    APP_ROUTE.login,
+    APP_ROUTE.signup,
+]

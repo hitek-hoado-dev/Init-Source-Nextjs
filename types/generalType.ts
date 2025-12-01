@@ -1,11 +1,11 @@
-export interface DataResonse<T> {
+export interface TObjectResponse<T> {
     code: number;
     results: {
         object: T;
     }
 }
 
-export interface DataResponseList<T> {
+export interface TObjectListResponse<T> {
     code: number;
     results: {
         objects: {
@@ -14,3 +14,16 @@ export interface DataResponseList<T> {
         }
     }
 }
+
+export interface BaseListParams {
+    page: number;
+    limit: number;
+}
+
+export interface GeneralErrorType<T = unknown> {
+    errorId: string;
+    errorMessageEn: string;
+    errorMessageVi: string;
+    errorMessageKo: string;
+    metadata?: T;
+  }

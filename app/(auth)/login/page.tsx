@@ -1,12 +1,17 @@
-"use client"
+"use client";
 
-import FormUser from "@/features/auth/components/FormUser"
 
 const LoginPage = () => {
-
   return (
-    <FormUser mode='login' />
-  )
-}
+    // <>
+    //   <HeroSection />
+    //   <DataCards />
+    //   <FeatureSection />
+    // </>
+    <div>
+      Login Page
+    </div>
+  );
+};
 
-export default LoginPage
+export default LoginPage;

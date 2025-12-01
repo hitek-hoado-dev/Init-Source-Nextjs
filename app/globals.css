@@ -1,18 +1,112 @@
 @import "tailwindcss";
 
+/* Pretendard */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('@/public/fonts/Pretendard-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
 @theme {
-  --color-backgroundGrey: #eeeeee;
-  --color-textSecondary: #828282;
-  --color-textPrimary: #000;
-  --color-modalBackground: #707070;
-  --color-semanticBlue2: #91E0FF;
-  --font-aoboshiOne: 'Aoboshi One', sans-serif;
-  --font-inter: 'Inter', sans-serif;
-  --font-libreBaskerville: 'Libre Baskerville', serif;
-  --font-libreFranklin: 'Libre Franklin', sans-serif;
+  --color-white: #FFFFFF;
+  --color-gray90: #121212;
+  --color-gray80: #333333;
+  --color-gray70: #666666;
+  --color-gray20: #cccccc;
+  --color-gray50: #999999;
+  --color-gray10: #f5f6fa;
+  --color-error: #ff0000;
+  --color-blue50: #0079ee;
+  --font-pretendard: "Pretendard", sans-serif;
+}
+
+@layer utilities {
+  /* Typography */
+  .bodySBold {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: -1%;
+  }
+  .titleXLBold {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -2%;
+  }
+  .titleXSBold {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: -1%;
+  }
+  .titleSBold {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: -1%;
+  }
+  .bodyLRegular {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -1%;
+  }
+  .bodySRegular {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -1%;
+  }
+  /* Container */
+  .container {
+    max-width: 1352px;
+  }
 }
 
 body {
-  font-family: "Aoboshi One", sans-serif;
-  line-height: 1.5;
+  font-family: var(--font-pretendard);
 }

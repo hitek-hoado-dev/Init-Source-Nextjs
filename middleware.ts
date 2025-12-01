@@ -2,22 +2,12 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { STORAGES } from './constants/storages'
-
-// Danh sách đường dẫn public mà không cần auth
-const PUBLIC_PATHS = [
-  '/login',
-  '/signup',
-]
+import { APP_ROUTE, PUBLIC_PATHS } from './constants/routes'
 
 export async function middleware(req: NextRequest) {
-  const xff = req.headers.get('x-forwarded-for') || ''
-  const ip = xff.split(',')[0] || ''
-  console.log('IP:', ip)
 
   const { pathname } = req.nextUrl
   const token = req.cookies.get(STORAGES.ACCESS_TOKEN)?.value
-    // console.log("token", token)
-    // console.log("req", req)
 
   // 1. Nếu đang vào public path
   if (PUBLIC_PATHS.some(p => pathname.startsWith(p))) {
@@ -34,9 +24,7 @@ export async function middleware(req: NextRequest) {
   // 2. Nếu không có token → redirect về login
   if (!token) {
     const loginUrl = req.nextUrl.clone()
-    loginUrl.pathname = '/login'
-    // bạn có thể thêm ?callbackUrl=pathname để redirect sau khi login
-    loginUrl.searchParams.set('from', pathname)
+    loginUrl.pathname = APP_ROUTE.login
     return NextResponse.redirect(loginUrl)
   }
 
@@ -46,5 +34,5 @@ export async function middleware(req: NextRequest) {
 
 // Áp dụng middleware cho toàn bộ route, trừ static, api/public, _next...
 export const config = {
-  matcher: '/((?!api/public|_next/static|_next/image|favicon.ico).*)',
+  matcher: '/((?!api/public|_next/static|_next/image|favicon.ico|fonts/|icons/|images/).*)',
 }

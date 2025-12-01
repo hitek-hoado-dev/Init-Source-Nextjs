@@ -1,11 +1,11 @@
 "use client"
-import FormUser from '@/features/auth/components/FormUser'
+
 import React from 'react'
 
-const SignupPage = () => {
+const page = () => {
   return (
-    <FormUser mode='signup' />
+    <div>page</div>
   )
 }
 
-export default SignupPage
+export default page
